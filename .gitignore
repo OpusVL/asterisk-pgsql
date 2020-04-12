@@ -1,0 +1,5 @@
+.env
+.pgdata
+.pgsocket
+log
+docker-compose.override.yml

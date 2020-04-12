@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  asterisk:
+    image: opusvl/asterisk:latest
+    volumes:
+      - "${PWD}/etc/asterisk/:/etc/asterisk:rw"
+      - "${PWD}/log:/var/log/asterisk"
+      - "${PWD}/odbc.ini:/etc/odbc.ini"
+      - "${PWD}/odbcinst.ini:/etc/odbcinst.ini"
+      - "${PWD}/.pgsocket:/var/run/postgresql"
+    ports:
+      - "5060:5060/tcp"
+      - "5060:5060/udp"
+      - "5038:5038"
+      - "8088:8088"
+      - "10000-11000:10000-11000/udp"
+      - "1314"
+    network_mode: "host"
+
+  db:
+    image: ${POSTGRES_IMAGE:-postgres}:${POSTGRES_IMAGE_VERSION:-12}
+    environment:
+      POSTGRES_DB:  "${POSTGRES_DB:-postgres}"
+      POSTGRES_USER: "${POSTGRES_USER:-postgres}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    volumes:
+      - "${PWD}/.pgdata:/var/lib/postgresql/data"
+      - "${PWD}/.pgsocket:/var/run/postgresql"
+      - "${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"
+    ports:
+      - "5432:5432"
+    restart: always    
