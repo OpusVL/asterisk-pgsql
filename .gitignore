@@ -3,3 +3,4 @@
 .pgsocket
 log
 docker-compose.override.yml
+etc/asterisk/keys
