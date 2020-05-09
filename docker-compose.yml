@@ -2,7 +2,7 @@ version: '3'
 
 services:
   asterisk:
-    image: asterisk:latest
+    image: andrewwyh/asterisk-docker
     volumes:
       - "${PWD}/etc/asterisk/:/etc/asterisk:rw"
       - "${PWD}/log/asterisk:/var/log/asterisk"
@@ -22,11 +22,11 @@ services:
     network_mode: "host"
 
   db:
-    image: ${POSTGRES_IMAGE:-postgres}:${POSTGRES_IMAGE_VERSION:-12}
+    image: ${POSTGRES_IMAGE:-postgres}:${POSTGRES_IMAGE_VERSION:-11}
     environment:
       POSTGRES_DB:  "${POSTGRES_DB:-postgres}"
       POSTGRES_USER: "${POSTGRES_USER:-postgres}"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_PASSWORD: "rootpass"
     volumes:
       - "${PWD}/.pgdata:/var/lib/postgresql/data"
       - "${PWD}/.pgsocket:/var/run/postgresql"
@@ -34,3 +34,34 @@ services:
     ports:
       - "5432:5432"
     restart: always    
+  phppgadmin:
+    restart: always
+    image: dockage/phppgadmin:latest
+    ports:
+    - "80:80"
+    - "443:443"
+    environment:
+    - PHP_PG_ADMIN_SERVER_DESC=PostgreSQL
+    - PHP_PG_ADMIN_SERVER_HOST=db
+    - PHP_PG_ADMIN_SERVER_PORT=5432
+    - PHP_PG_ADMIN_SERVER_SSL_MODE=allow
+    - PHP_PG_ADMIN_SERVER_DEFAULT_DB=template1
+    - PHP_PG_ADMIN_SERVER_PG_DUMP_PATH=/usr/bin/pg_dump
+    - PHP_PG_ADMIN_SERVER_PG_DUMPALL_PATH=/usr/bin/pg_dumpall
+
+    - PHP_PG_ADMIN_DEFAULT_LANG=auto
+    - PHP_PG_ADMIN_AUTO_COMPLETE=default on
+    - PHP_PG_ADMIN_EXTRA_LOGIN_SECURITY=false
+    - PHP_PG_ADMIN_OWNED_ONLY=false
+    - PHP_PG_ADMIN_SHOW_COMMENTS=true
+    - PHP_PG_ADMIN_SHOW_ADVANCED=false
+    - PHP_PG_ADMIN_SHOW_SYSTEM=false
+    - PHP_PG_ADMIN_MIN_PASSWORD_LENGTH=1
+    - PHP_PG_ADMIN_LEFT_WIDTH=200
+    - PHP_PG_ADMIN_THEME=default
+    - PHP_PG_ADMIN_SHOW_OIDS=false
+    - PHP_PG_ADMIN_MAX_ROWS=30
+    - PHP_PG_ADMIN_MAX_CHARS=50
+    - PHP_PG_ADMIN_USE_XHTML_STRICT=false
+    - PHP_PG_ADMIN_HELP_BASE=http://www.postgresql.org/docs/%s/interactive/
+    - PHP_PG_ADMIN_AJAX_REFRESH=3
