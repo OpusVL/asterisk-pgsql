@@ -10,6 +10,8 @@ services:
       - "${PWD}/odbcinst.ini:/etc/odbcinst.ini"
       - "${PWD}/.pgsocket:/var/run/postgresql"
       - "${PWD}/log/supervisor:/var/log/supervisor"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"  
     ports:
       - "5060:5060/tcp"
       - "5060:5060/udp"
@@ -31,6 +33,8 @@ services:
       - "${PWD}/.pgdata:/var/lib/postgresql/data"
       - "${PWD}/.pgsocket:/var/run/postgresql"
       - "${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"  
     ports:
       - "5432:5432"
     restart: always    
@@ -40,6 +44,9 @@ services:
     ports:
     - "80:80"
     - "443:443"
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"  
     environment:
     - PHP_PG_ADMIN_SERVER_DESC=PostgreSQL
     - PHP_PG_ADMIN_SERVER_HOST=db
@@ -48,7 +55,6 @@ services:
     - PHP_PG_ADMIN_SERVER_DEFAULT_DB=template1
     - PHP_PG_ADMIN_SERVER_PG_DUMP_PATH=/usr/bin/pg_dump
     - PHP_PG_ADMIN_SERVER_PG_DUMPALL_PATH=/usr/bin/pg_dumpall
-
     - PHP_PG_ADMIN_DEFAULT_LANG=auto
     - PHP_PG_ADMIN_AUTO_COMPLETE=default on
     - PHP_PG_ADMIN_EXTRA_LOGIN_SECURITY=false
@@ -65,3 +71,18 @@ services:
     - PHP_PG_ADMIN_USE_XHTML_STRICT=false
     - PHP_PG_ADMIN_HELP_BASE=http://www.postgresql.org/docs/%s/interactive/
     - PHP_PG_ADMIN_AJAX_REFRESH=3
+  fail2ban:
+    image: crazymax/fail2ban:latest
+    container_name: fail2ban
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - "./fail2ban-data:/data"
+      - "./log:/var/log:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"  
+    env_file:
+      - "./fail2ban.env"
+    restart: always
