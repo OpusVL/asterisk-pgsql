@@ -92,7 +92,7 @@
         <tr>
             <td>{{$aors->id}}</td>
             <td>{{$aors->max_contacts}} </td>
-            <td>{{$auth->remove_existing}} </td>
+            <td>{{$aors->remove_existing}} </td>
               <td>
                 <a href="{{ route('endpoints.edit',$endpoint->id)}}" class="btn btn-primary">Edit</a>
             </td>

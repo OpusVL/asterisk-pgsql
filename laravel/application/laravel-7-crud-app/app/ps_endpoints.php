@@ -21,4 +21,5 @@ class ps_endpoints extends Model
 	'call_group',
 	'pickup_group'
     ];
+    public $timestamps = false;
 }

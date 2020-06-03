@@ -11,4 +11,6 @@ class ps_aors extends Model
         'max_contacts',
         'remove_existing'
         ];
+    
+    public $timestamps = false;
 }

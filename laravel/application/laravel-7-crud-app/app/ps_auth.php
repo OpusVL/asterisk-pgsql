@@ -12,4 +12,6 @@ class ps_auth extends Model
 	'username',
 	'password'
     ];
+    
+    public $timestamps = false;
 }
