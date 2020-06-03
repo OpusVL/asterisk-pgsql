@@ -4,4 +4,3 @@
 log
 docker-compose.override.yml
 etc
-web
