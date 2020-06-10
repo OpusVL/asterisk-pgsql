@@ -151,6 +151,14 @@ class EndpointController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $endpoint = ps_endpoints::find($id);
+        $auth = ps_auth::find($id);
+        $aors = ps_aors::find($id);
+
+        $endpoint->delete();
+        $auth->delete();
+        $aors->delete();
+
+        return redirect('/endpoints')->with('success', 'Contact deleted!');
     }
 }

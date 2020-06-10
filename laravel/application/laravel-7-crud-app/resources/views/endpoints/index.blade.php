@@ -1,6 +1,17 @@
 @extends('base')
 
 @section('main')
+<div class="col-sm-12">
+
+  @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}  
+    </div>
+  @endif
+</div>
+<div>
+    <a style="margin: 19px;" href="{{ route('endpoints.create')}}" class="btn btn-primary">New contact</a>
+    </div>  
 <div class="row">
 <div class="col-sm-12">
     <h2 class="display-4">Endpoints</h2>    
