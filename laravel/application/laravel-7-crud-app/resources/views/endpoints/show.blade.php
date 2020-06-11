@@ -14,8 +14,7 @@
     </div>  
   
 <div class="col-sm-12">
-<form method="get" action="">
-@csrf
+<form method="post" action="{{ route('endpoints.show','')}}">
     <div class="form-group">
 
       <label for="context">Search Context: </label>

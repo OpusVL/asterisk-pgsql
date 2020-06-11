@@ -89,14 +89,19 @@ class EndpointController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * Display the specified resource by context
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $request->validate([
+            'context'=>'required',
+        ]);
+        $context = $request->get('context');
+        $endpoint = ps_endpoints::find($context);
+        
+        //print $endpoint;
     }
 
     /**
