@@ -17,13 +17,13 @@ class EndpointController extends Controller
      */
     public function index()
     {
-        $ps_endpoints = ps_endpoints::all();
-        $ps_auth = ps_auth::all();
-        $ps_aors = ps_aors::all();
 
-        //$ps_endpoints = DB::table('ps_endpoints')->get();
+        $ps_endpoints = DB::table('ps_endpoints')
+        ->leftJoin('ps_auths','ps_endpoints.id','=','ps_auths.id')
+        ->leftJoin('ps_aors','ps_endpoints.id','=', 'ps_aors.id')
+        -> get();
 
-        return view('endpoints.index',compact('ps_endpoints','ps_auth','ps_aors'));
+        return view('endpoints.index',compact('ps_endpoints'));
     }
 
     /**

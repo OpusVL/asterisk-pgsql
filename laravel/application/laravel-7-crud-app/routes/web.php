@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Route::resource('endpoints', 'EndpointController');
-Route::get('/context', 'ContextController@show');
+Route::get('/context', 'ContextController@show'); 
+Route::resource('contexts','ContextController'); //unused at the moment, meant to replace the "get" above
 
 Route::get('/test', function () {
     return view('endpoints.create');

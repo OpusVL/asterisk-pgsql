@@ -26,7 +26,7 @@
 </div>
 <div class="row">
 <div class="col-sm-12">
-    <h2 class="display-4">Endpoints</h2>    
+    <h2 class="display-4">Context Endpoints</h2>    
   <table class="table table-striped">
     <thead>
         <tr>
