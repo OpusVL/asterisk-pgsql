@@ -12,8 +12,9 @@ class ContextController extends Controller
 {
     public function index()
     {
-    
+        return view('endpoints.context');
     }
+
     public function show(Request $request)
     {
         /*$request->validate([
@@ -22,10 +23,6 @@ class ContextController extends Controller
         */
         $context = $request->get('context');
         $endpoint = ps_endpoints::find($context);
-
-        //$results = DB::table('ps_endpoints')->where('context',11);
-        
-        //$ps_endpoints = DB::table('ps_endpoints')->where('context',$context)->get();
             
             if ($context==""){
                 $ps_endpoints = DB::table('ps_endpoints')
@@ -41,26 +38,8 @@ class ContextController extends Controller
                 ->where ('ps_endpoints.context','=',$context)
                 -> get();
             }
-            /*foreach($ps_endpoints as $endpoint)
-            {
-                print "Context is ";
-                print $endpoint->context;
-                print "<br>";
-                print "ID is ";
-                print $endpoint->username;
-                print "<br>";
-                print "Password is ";
-                print $endpoint->password;
-                print "<br>";
-                print "Remove existing is ";
-                print $endpoint->remove_existing;
-                print "<br>";
-
-
-            }
-            */
             
-            return view('endpoints.context',compact('ps_endpoints'));
+            return view('endpoints.context',compact('ps_endpoints','context'));
 
         
     }

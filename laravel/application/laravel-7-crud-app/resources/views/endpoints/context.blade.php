@@ -9,24 +9,17 @@
     </div>
   @endif
 </div>
-<div>
-    <a style="margin: 19px;" href="{{ route('endpoints.create')}}" class="btn btn-primary">New contact</a>
-    </div>  
   
-<div class="col-sm-12">
-<form method="get" action="/context">
-@csrf
-    <div class="form-group">
-      <label for="context">Search Context: </label>
-      <input type="text" class="form-control" name="context" />
-    </div>  
-    <button type="submit" class="btn btn-primary">Search</button>
-
-  </form>
-</div>
 <div class="row">
 <div class="col-sm-12">
-    <h2 class="display-4">Context Endpoints</h2>    
+    <h2 class="display-4">Extensions by Company</h2>    
+
+<div style="margin-top:100px"></div>
+
+<h3>Company: {{$context}}</h3>
+
+<div style="margin-top:30px"></div>
+
   <table class="table table-striped">
     <thead>
         <tr>

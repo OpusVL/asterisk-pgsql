@@ -9,29 +9,18 @@
     </div>
   @endif
 </div>
-<div>
-    <a style="margin: 19px;" href="{{ route('endpoints.create')}}" class="btn btn-primary">New contact</a>
-    </div>  
   
-<div class="col-sm-12">
-<form method="get" action="/context">
-@csrf
-    <div class="form-group">
-      <label for="context">Search Context: </label>
-      <input type="text" class="form-control" name="context" />
-    </div>  
-    <button type="submit" class="btn btn-primary">Search</button>
-
-  </form>
-</div>
 <div class="row">
 <div class="col-sm-12">
-    <h2 class="display-4">Endpoints</h2>    
+    <h2 class="display-4">All Extensions</h2>    
+
+<div style="margin-top:100px"></div>
+
   <table class="table table-striped">
     <thead>
         <tr>
           <td>ID</td>
-          <td>Context</td>
+          <td>Company (context)</td>
           <td>Auth Username</td>
           <td>Auth Password</td>
           <td>Aors Max Contacts</td>
@@ -44,7 +33,7 @@
         @foreach($ps_endpoints as $endpoint)
         <tr>
             <td>{{$endpoint->id}}</td>
-            <td>{{$endpoint->context}} </td>
+            <td><a href="/contexts/?context={{$endpoint->context}}">{{$endpoint->context}}</a> </td>
             <td>{{$endpoint->username}} </td>
             <td>{{$endpoint->password}} </td>
             <td> {{$endpoint->max_contacts}} </td>
