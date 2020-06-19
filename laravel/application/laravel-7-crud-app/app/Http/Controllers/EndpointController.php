@@ -95,13 +95,7 @@ class EndpointController extends Controller
      */
     public function show(Request $request)
     {
-        $request->validate([
-            'context'=>'required',
-        ]);
-        $context = $request->get('context');
-        $endpoint = ps_endpoints::find($context);
-        
-        //print $endpoint;
+
     }
 
     /**
@@ -114,7 +108,7 @@ class EndpointController extends Controller
     {
         $endpoint = ps_endpoints::find($id);
         $auth = ps_auth::find($id);
-        return view('endpoints.edit', compact('endpoint'),compact('auth'));
+        return view('endpoints.edit', compact('endpoint'), compact('auth'));
     }
 
     /**

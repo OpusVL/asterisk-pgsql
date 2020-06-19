@@ -43,10 +43,10 @@
             <td> {{$endpoint->max_contacts}} </td>
             <td>{{$endpoint->remove_existing}} </td>
               <td>
-                <a href="{{ route('endpoints.edit',$endpoint->id)}}" class="btn btn-primary">Edit</a>
+              <a href="{{ URL::to('endpoints/' . $endpoint->id) . '/edit'}}" class="btn btn-primary">Edit</a>
             </td>
             <td>
-                <form action="{{ route('endpoints.destroy', $endpoint->id)}}" method="post">
+            <form action="{{ URL::to('endpoints/' . $endpoint->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
