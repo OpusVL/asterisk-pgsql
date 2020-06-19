@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class ps_endpoints extends Model
 {
+     /**
+     * The "type" of the auto-incrementing ID.
+     *
+     * @var string
+     */
+protected $keyType = 'string';
+
  protected $fillable = [
         'id',
 	'transport',

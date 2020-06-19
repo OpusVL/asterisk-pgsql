@@ -35,7 +35,7 @@
               <input type="text" class="form-control" name="pickup_group"/>
           </div>
                                
-          <button type="submit" class="btn btn-primary-outline">Add Endpoint</button>
+          <button type="submit" class="btn btn-primary">Add Endpoint</button>
       </form>
   </div>
 </div>

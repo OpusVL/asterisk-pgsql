@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'EndpointController@index');
 
 Route::resource('endpoints', 'EndpointController');
 Route::get('/contexts', 'ContextController@show'); 
