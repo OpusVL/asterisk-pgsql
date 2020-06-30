@@ -133,6 +133,8 @@ class EndpointController extends Controller
         $aors = ps_aors::find($id);
 
         $endpoint->id = $request->get('id');
+        $endpoint->auth=$request->get('id');
+        $endpoint->aors=$request->get('id');
         $endpoint->context = $request->get('context');
         $endpoint->pickup_group = $request->get('pickup_group');
         $endpoint->save();
