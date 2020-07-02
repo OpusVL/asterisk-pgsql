@@ -79,7 +79,8 @@ class EndpointController extends Controller
         $aors = new ps_aors([
             'id' => $request->get('id'),
             'max_contacts' => "1",
-            'remove_existing' => "yes"
+            'remove_existing' => "yes",
+            'maximum_expiration' => "60"
         ]);
 
         $endpoint->save();
@@ -145,6 +146,7 @@ class EndpointController extends Controller
         $auth->save();
 
         $aors->id = $request->get('id');
+        $aors->maximum_expiration="60";
         $aors->save();
 
         print "ID is ".$request->get('id');

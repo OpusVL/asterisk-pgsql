@@ -11,11 +11,13 @@ class ps_aors extends Model
      *
      * @var string
      */
-protected $keyType = 'string';
+    protected $keyType = 'string';
+    
     protected $fillable = [
         'id',
         'max_contacts',
-        'remove_existing'
+        'remove_existing',
+        'maximum_expiration'
         ];
     
     public $timestamps = false;
