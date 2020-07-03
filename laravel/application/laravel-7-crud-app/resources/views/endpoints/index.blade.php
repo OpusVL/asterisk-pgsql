@@ -1,6 +1,6 @@
-@extends('base')
+@extends('layouts.app')
 
-@section('main')
+@section('content')
 <div class="col-sm-12">
 
   @if(session()->get('success'))
@@ -11,7 +11,7 @@
 </div>
   
 <div class="row">
-<div class="col-sm-12">
+<div class="col-sm-8 offset-sm-2">
     <h2 class="display-4">All Extensions</h2>    
 
 <div style="margin-top:100px"></div>

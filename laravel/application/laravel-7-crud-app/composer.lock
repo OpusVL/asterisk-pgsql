@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0dcbdc80776ca79d6311b8f92c5a4b5",
+    "content-hash": "5a993688a4552c644071256b6b56c39a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -943,16 +943,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.0.3",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "15368c5328efb7ce94f35ca750acde9b496ab1b1"
+                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/15368c5328efb7ce94f35ca750acde9b496ab1b1",
-                "reference": "15368c5328efb7ce94f35ca750acde9b496ab1b1",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/da9350533d0da60d5dc42fb7de9c561c72129bba",
+                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba",
                 "shasum": ""
             },
             "require": {
@@ -994,7 +994,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-04-29T15:06:45+00:00"
+            "time": "2020-06-30T20:56:33+00:00"
         },
         {
             "name": "league/commonmark",

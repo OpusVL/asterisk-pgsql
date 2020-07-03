@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'EndpointController@index');
+Route::get('/', 'EndpointController@index')->middleware('auth');
 
-Route::resource('endpoints', 'EndpointController');
-Route::get('/contexts', 'ContextController@show'); 
+Route::resource('endpoints', 'EndpointController')->middleware('auth');
+Route::get('/contexts', 'ContextController@show')->middleware('auth');
 //Route::resource('contexts','ContextController'); //unused at the moment, meant to replace the "get" above
 
+
+Auth::routes();
+//Route::get('/home', 'EndpointController@index')->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home');
